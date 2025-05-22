@@ -43,5 +43,31 @@ public class Grafo {
     public int[][] getMatriz() {
         return matriz;
     }
+
+    public int[][] floydWarshall() {
+    int n = matriz.length;
+    int[][] dist = new int[n][n];
+
+    // Copiar la matriz original a dist[][]
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            dist[i][j] = matriz[i][j];
+        }
+    }
+
+    // Aplicar el algoritmo de Floyd-Warshall
+    for (int k = 0; k < n; k++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (dist[i][k] + dist[k][j] < dist[i][j]) {
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                }
+            }
+        }
+    }
+
+    return dist;
+}
+
 }
 

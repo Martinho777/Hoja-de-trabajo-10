@@ -33,5 +33,20 @@ public class Main {
             }
             System.out.println();
         }
+
+        System.out.println("\nMatriz de distancias mas cortas (Floyd-Warshall):");
+        int[][] distancias = grafo.floydWarshall();
+        for (int i = 0; i < distancias.length; i++) {
+            System.out.print(ciudades[i] + " ");
+            for (int j = 0; j < distancias[i].length; j++) {
+                if (distancias[i][j] >= Integer.MAX_VALUE / 2) {
+                    System.out.print("INF ");
+                } else {
+                    System.out.printf("%3d ", distancias[i][j]);
+                }
+            }
+            System.out.println();
+}
+
     }
 }
