@@ -27,4 +27,21 @@ public class Grafo {
         mapaCiudades.put('D', 3);
         mapaCiudades.put('E', 4);
     }
+
+    public void agregarArco(char origen, char destino, int peso) {
+        int i = mapaCiudades.get(origen);
+        int j = mapaCiudades.get(destino);
+        matriz[i][j] = peso;
+    }
+
+    public void eliminarArco(char origen, char destino) {
+        int i = mapaCiudades.get(origen);
+        int j = mapaCiudades.get(destino);
+        matriz[i][j] = INF;
+    }
+
+    public int[][] getMatriz() {
+        return matriz;
+    }
 }
+
