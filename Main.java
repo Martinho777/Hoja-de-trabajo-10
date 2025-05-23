@@ -47,6 +47,9 @@ public class Main {
             }
             System.out.println();
 }
+        char centro = grafo.obtenerCentro();
+        System.out.println("\nEl centro del grafo es: " + centro);
+
 
     }
 }

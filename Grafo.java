@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class Grafo {
-    private final int INF = Integer.MAX_VALUE / 2; // Usamos esto para representar ∞ sin desbordar al sumar
+    private final int INF = Integer.MAX_VALUE / 2; // Usamos esto para representar ∞ sin desbordar
     private int[][] matriz;
     private HashMap<Character, Integer> mapaCiudades;
 
@@ -67,6 +67,37 @@ public class Grafo {
     }
 
     return dist;
+    }
+    //obtener el centro del grafo
+    public char obtenerCentro() {
+    int[][] distancias = floydWarshall();
+    int n = distancias.length;
+    int menorExcentricidad = INF;
+    int indiceCentro = -1;
+
+    for (int i = 0; i < n; i++) {
+        int excentricidad = 0;
+        for (int j = 0; j < n; j++) {
+            if (distancias[i][j] > excentricidad) {
+                excentricidad = distancias[i][j];
+            }
+        }
+
+        if (excentricidad < menorExcentricidad) {
+            menorExcentricidad = excentricidad;
+            indiceCentro = i;
+        }
+    }
+
+    // Buscar la letra correspondiente al índice
+    for (var entrada : mapaCiudades.entrySet()) {
+        if (entrada.getValue() == indiceCentro) {
+            return entrada.getKey();
+        }
+    }
+
+    return '?'; // Si algo falla
+
 }
 
 }
